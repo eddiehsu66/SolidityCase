@@ -1,0 +1,4 @@
+.git/
+.deps/
+.states/
+**/artifacts/  
