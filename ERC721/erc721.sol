@@ -201,7 +201,7 @@ contract ERC721 is IERC721, IERC721Metadata{
      * 1. tokenId尚不存在。
      * 2. to不是0地址.
      */
-    function _mint(address to, uint tokenId) external {
+    function _mint(address to, uint tokenId) internal virtual {
         require(to != address(0), "mint to zero address");
         require(_owners[tokenId] == address(0), "token already minted");
 
@@ -212,7 +212,7 @@ contract ERC721 is IERC721, IERC721Metadata{
     }
 
     // 销毁函数，通过调整_balances和_owners变量来销毁tokenId，同时释放Transfer事件。条件：tokenId存在。
-    function _burn(uint tokenId) public {
+    function _burn(uint tokenId) internal virtual {
         address owner = ownerOf(tokenId);
         require(msg.sender == owner, "not owner of token");
 
